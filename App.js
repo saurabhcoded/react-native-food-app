@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from "./src/screens/Home";
+import About from "./src/screens/About";
+import RestaurentScreen from "./src/screens/RestaurentScreen";
 
+const Stack=createNativeStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" options={{ title: 'DriverLoo App' }} component={Home}/>
+          <Stack.Screen name="Restaurent" options={{ title: 'Restaurent Detail' }} component={RestaurentScreen}/>
+          <Stack.Screen name="About" component={About}/>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
